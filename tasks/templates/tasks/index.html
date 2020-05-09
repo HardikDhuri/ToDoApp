@@ -13,9 +13,12 @@
 
 </form>
 {% for task in tasks %}
+    
     <div>
+        <a href="{% url 'update' task.id %}">Update</a>
         <h3>{{ task }}</h3>
     </div>
+
     {% empty %}
     <div>
         <h3>No Tasks Available Right Now</h3>
