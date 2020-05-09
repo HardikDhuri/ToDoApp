@@ -1,0 +1,26 @@
+{% extends 'tasks/layout.html' %}
+{% block body %}
+
+<h1 id = 'heading'>To Do</h1>
+
+<form action="{% url 'index' %}" method="post">
+{% csrf_token %}
+    <div>
+        {{ form.title }}
+        <input type="submit" value="Create" name="Create Task"> 
+    </div>
+    
+
+</form>
+{% for task in tasks %}
+    <div>
+        <h3>{{ task }}</h3>
+    </div>
+    {% empty %}
+    <div>
+        <h3>No Tasks Available Right Now</h3>
+    </div>
+    
+{% endfor %}
+
+{% endblock %}
