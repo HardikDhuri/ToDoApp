@@ -1,0 +1,12 @@
+{% extends "tasks/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <h1>Login Page</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p>Don't have an Account?<a href="{% url 'register' %}"><b>Register</b></a></p>
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
+{% endblock %}

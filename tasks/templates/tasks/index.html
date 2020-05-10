@@ -1,22 +1,27 @@
 {% extends 'tasks/layout.html' %}
 {% block body %}
+<div class="container-fluid bg-primary  text-light text-center">
+    <h1>Goal For Today</h1>
+</div>
 
-<h1 id = 'heading'>To Do</h1>
 
 <form action="{% url 'index' %}" method="post">
 {% csrf_token %}
     <div>
         {{ form.title }}
-        <input type="submit" value="Create" name="Create Task"> 
+        <button type="submit" name="Create Task" class="btn btn-outline-warning">Create</button> 
     </div>
     
 
 </form>
 {% for task in tasks %}
     
-    <div>
-        <a href="{% url 'update' task.id %}">Update</a>
-        <h3>{{ task }}</h3>
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-5"><h3>{{ task }}</h3></div>
+            <div class="col-1"><a href="{% url 'update' task.id %}"><button type="button" class="btn btn-outline-primary">Edit</button></a></div>
+            <div class="col-.6"><a href="{% url 'delete' task.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a></div>
+        </div>
     </div>
 
     {% empty %}

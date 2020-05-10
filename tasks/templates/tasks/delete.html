@@ -1,0 +1,10 @@
+{% extends "tasks/layout.html" %}
+{% block body %}
+    <form method="post" action = "{% url 'delete' task.id %}" >
+        {% csrf_token %}
+        Are you sure you want to Delete "<b>{{ task }}</b>"?
+        <button name="Delete Task" type="submit" class="btn btn-outline-danger">Delete</button>
+        <a href="{% url 'index' %}"><button type="button" class="btn btn-outline-secondary">Cancel</button></a>
+    </form>
+   
+{% endblock %}
